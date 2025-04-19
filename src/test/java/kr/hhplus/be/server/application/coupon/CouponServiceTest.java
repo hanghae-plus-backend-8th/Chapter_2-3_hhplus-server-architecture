@@ -10,12 +10,12 @@ import kr.hhplus.be.server.domain.coupon.MemberCouponRepository;
 import kr.hhplus.be.server.domain.member.Member;
 import kr.hhplus.be.server.domain.member.MemberRepository;
 import kr.hhplus.be.server.shared.dto.ListDto;
+
 import org.junit.jupiter.api.*;
 import org.mockito.InOrder;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -92,7 +92,6 @@ class CouponServiceTest {
         assertThat(myCouponList.getTotalCount()).isEqualTo(5);
         verify(couponService, times(1)).list(couponListCommand);
     }
-
     @Order(3)
     @DisplayName("동시에 여러 명의 사용자가 쿠폰을 발급할 수 있다. (실패)")
     @Test

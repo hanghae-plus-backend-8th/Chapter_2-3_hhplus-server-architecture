@@ -1,5 +1,6 @@
 package kr.hhplus.be.server.application.order;
 
+
 import jakarta.transaction.Transactional;
 import kr.hhplus.be.server.application.coupon.CouponService;
 import kr.hhplus.be.server.application.order.OrderCommand.OrderCaptureCommand;
@@ -157,5 +158,7 @@ class OrderServiceTest {
                 .getQuantity();
 
         assertThat(remainingQuantity).isEqualTo(30);
+        inOrder.verify(productRepository, times(1)).updateQuantity(any());
+        inOrder.verify(memberCouponRepository, times(1)).updateStatus(any());
     }
 }
